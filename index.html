@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSAS</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/osas.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="light-theme">
+
+<!--   
+    - #HEADER
+  -->
+
+  
+
+  <header  style="height: 100px;background-color: rgb(125, 12, 12);">
+
+    <div class="container">
+
+      <nav class="navbar">
+
+        <style>
+          .logo-container, .footer-logo {
+              width: 150px;
+              height: 150px;
+              perspective: 1000px;
+              position: relative;
+              display: inline-block;
+          }
+          .logo {
+              width: 50%;
+              height: 50%;
+              position: absolute;
+              backface-visibility: hidden;
+              transition: transform 3s ease-in-out;
+          }
+  
+          .back {
+              transform: rotateY(180deg);
+          }
+  
+          /* Flip Effect */
+          .flipped .front {
+              transform: rotateY(180deg);
+          }
+  
+          .flipped .back {
+              transform: rotateY(0deg);
+          }
+  
+          /* Footer Logo Smaller */
+          .footer-logo {
+              width: 75px; 
+              height: 75px;
+          }
+  
+          .footer-logo .logo {
+              width: 50%; 
+              height: 50%;
+          }
+      </style>
+      
+      <a href="#" class="logo-container" id="logoContainer">
+      <img src="assets/images/dssc.png" alt="DSSC LOGO" class="logo front" style="margin-top: -14.5%;">
+      <img src="assets/images/osas.png" alt="OSAS LOGO" class="logo back" style="margin-top: -14.5%;">
+      </a>
+
+      <style>
+        .animated-text {
+            display: flex;
+            font-size: 24px;
+            font-weight: 1000;
+            text-transform: uppercase;
+            color: blue;
+        }
+
+        .letter {
+            opacity: 0;
+            animation: fadeInOut 5s infinite ease-in-out;
+            color: white;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            50% { opacity: 1; transform: translateY(0px); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* Delay each letter's animation */
+        .letter:nth-child(1) { animation-delay: 0s; }
+        .letter:nth-child(2) { animation-delay: 0.2s; }
+        .letter:nth-child(3) { animation-delay: 0.4s; }
+        .letter:nth-child(4) { animation-delay: 0.6s; }
+        .letter:nth-child(5) { animation-delay: 0.8s; } /* Space */
+        .letter:nth-child(6) { animation-delay: 1s; }
+        .letter:nth-child(7) { animation-delay: 1.2s; }
+        .letter:nth-child(8) { animation-delay: 1.4s; }
+        .letter:nth-child(9) { animation-delay: 1.6s; }
+    </style>
+      <p style="margin-left: -65%; margin-top: -11.5%; font-size: 20px; font-weight: 1000; text-transform: uppercase;" class="animated-text">
+        <span class="letter">D</span>
+        <span class="letter">S</span>
+        <span class="letter">S</span>
+        <span class="letter">C</span>
+        <span class="letter">-</span>
+        <span class="letter">O</span>
+        <span class="letter">S</span>
+        <span class="letter">A</span>
+        <span class="letter">S</span>
+      </p>    
+
+        <div class="btn-group">
+
+          <!-- <button class="theme-btn theme-btn-mobile light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button> -->
+
+          <button class="nav-menu-btn">
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="flex-wrapper" style="margin-top: -10%;margin-left: 7%;">
+
+          <ul class="desktop-nav">
+
+            
+
+            
+
+
+            <style>
+/* General Dropdown Styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 10;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Submenu Styling */
+.dropdown-sub {
+  position: relative;
+}
+
+.dropdown-submenu {
+  display: none;
+  position: absolute;
+  right: 100%; /* Opens to the left side */
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 20;
+  min-width: 200px;
+}
+
+.dropdown-sub:hover .dropdown-submenu {
+  display: block;
+}
+
+/* Styling for .dropdown-sub-1 and .dropdown-submenu-1 */
+.dropdown-sub-1 {
+  position: relative;
+}
+.dropdown-sub-2 {
+  position: relative;
+}
+
+.dropdown-submenu-1 {
+  display: none;
+  position: absolute;
+  right: 100%; /* Opens to the left side */
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 30;
+  min-width: 200px;
+}
+.dropdown-submenu-2 {
+  display: none;
+  position: absolute;
+  right: 100%; /* Opens to the left side */
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 30;
+  min-width: 200px;
+}
+
+.dropdown-sub-1:hover .dropdown-submenu-1 {
+  display: block;
+}
+.dropdown-sub-2:hover .dropdown-submenu-2 {
+  display: block;
+}
+
+            </style>
+
+            <li>
+                <a href="about_us.html" class="nav-link"></a>
+            </li>
+            <li class="dropdown"> 
+              <a href="#" class="nav-link">Services ▼</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-sub">
+                  <a href="#" class="dropdown-item">• Student Welfare</a>
+                  <ul class="dropdown-submenu">
+                    <li><a href="#" class="dropdown-item">Student and Parents Orientation</a></li>
+                    
+                    <li class="dropdown-sub-1">
+                      <a href="#" class="dropdown-item">• Seminar/s or Symposia on Topics</a>
+                      <ul class="dropdown-submenu-1">
+                        <li><a href="#" class="dropdown-item">RA 7877-Anti-Sexual Harassment Act</a></li>
+                        <li><a href="#" class="dropdown-item">RA 8504-Philippine AIDS Prevention and Control Act of 1998</a></li>
+                        <li><a href="#" class="dropdown-item">RA 9165-Comprehensive Dangerous Drugs Act</a></li>
+                        <li><a href="#" class="dropdown-item">Self-care and healthy lifestyle</a></li>
+                        <li><a href="#" class="dropdown-item">RA 9442 Public ridicule and vilification agints persons with disability</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#" class="dropdown-item">Guidance & Counseling Services</a></li>
+                    <li class="dropdown-sub-2">
+                      <a href="#" class="dropdown-item">• Career & Job Placement Services</a>
+                      <ul class="dropdown-submenu-2">
+                        <li><a href="#" class="dropdown-item">Pre-employment Sessions for Graduating Students</a></li>
+                        <li><a href="#" class="dropdown-item">Job Fair</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#" class="dropdown-item">Student Handbook</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-sub-1">
+                  <a href="#" class="dropdown-item">• Student Development</a>
+                  <ul class="dropdown-submenu-1">
+                    <li class="dropdown-sub-2">
+                      <a href="#" class="dropdown-item">• Clubs and Organizations</a>
+                      <ul class="dropdown-submenu-2">
+                        <li><a href="#" class="dropdown-item">28 Registered Organizations</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#" class="dropdown-item">Leadership Trainings</a></li>
+                    <li><a href="#" class="dropdown-item">Student Government</a></li>
+                    <li><a href="#" class="dropdown-item">Student Discipline</a></li>
+                    <li><a href="#" class="dropdown-item">School Publication</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-sub-1">
+                  <a href="#" class="dropdown-item">• Institutional Student Programs & <br>Services</a>
+                  <ul class="dropdown-submenu-1">
+                    <li><a href="#" class="dropdown-item">Food and Health Services</a></li>
+                    <li><a href="#" class="dropdown-item">Student Housing & Residential Facilities</a></li>
+                    <li><a href="#" class="dropdown-item">Multi-faith Services</a></li>
+                    <li><a href="#" class="dropdown-item">Services for Students with Special Needs and Disabilities</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100057039026191" target="_blank" class="dropdown-item"><ion-icon name="logo-facebook"></ion-icon> Culture and Arts</a></li>
+                    <li><a href="https://www.facebook.com/dssc.edu" target="_blank" class="dropdown-item"><ion-icon name="logo-facebook"></ion-icon> Sports Development Office</a></li>
+                  </ul>
+                </li>
+
+
+              </ul>
+            </li>
+            
+          </ul>
+
+          <!-- <button class="theme-btn theme-btn-desktop light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button> -->
+
+        </div>
+
+        <div class="mobile-nav">
+
+          <button class="nav-close-btn">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="wrapper">
+
+            <p class="h3 nav-title">Main Menu</p>
+
+            <ul>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+              </li>
+
+              <li class="dropdown"> 
+                <a href="#" class="nav-link">Services ▼</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-sub">
+                    <a href="#" class="dropdown-item">Student Welfare -></a>
+                    <ul class="dropdown-submenu">
+                      <li><a href="#" class="dropdown-item">Student and Parents Orientation</a></li>
+                      <li><a href="#" class="dropdown-item">RA 7877 - Anti-Sexual Harassment Act</a></li>
+                      <li><a href="#" class="dropdown-item">RA 8504 - Philippine AIDS Prevention and Control Act of 1998</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Burial Assistance</a></li>
+                  <li><a href="#" class="dropdown-item">Aid for House Damage</a></li>
+                  <li><a href="#" class="dropdown-item">Blood Donation Requests</a></li>
+                  <li><a href="#" class="dropdown-item">Rice Distribution</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">Contact</a>
+              </li>
+            </ul>
+
+          </div>
+
+          <div>
+
+            
+
+            <ul>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Database</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">Accessibility</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">Web Performance</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+
+
+  <main>
+
+    <!--
+      - #HERO SECTION
+    -->
+
+    <div class="hero" style="
+    background: url('assets/images/BACKGROUND.png') no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 88vh;">
+
+      <div class="container">
+
+        <div class="left">
+
+          <h1 class="h1">
+            <!-- Hi, I'm <b>Julia&nbsp;Walker</b>.
+            <br>Web Developer -->
+            Office of Student Affairs and Services
+          </h1>
+
+          <p class="h3">
+            <!-- Specialized in <abbr title="Accessibility">a11y</abbr>
+            and Core Web Vitals -->
+          </p>
+
+          <div class="btn-group">
+            <a href="https://handbot.sulopcris.info/login" target="_blank" class="btn-gradient">Go to Student Handbook -></a>
+            <!-- <a href="#" class="btn btn-secondary">About Me</a> -->
+          </div>
+          <style>
+            .btn-gradient {
+                display: inline-block;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                text-decoration: none;
+                border: none;
+                border-radius: 30px;
+                background-size: 300% 300%;
+                background-image: linear-gradient(
+                    -45deg, 
+                    rgb(125, 12, 12), 
+                    blue, 
+                    white, 
+                    rgb(125, 12, 12)
+                );
+                animation: gradientFlow 5s ease infinite;
+                transition: transform 0.2s ease;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+        
+            .btn-gradient:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+        
+            @keyframes gradientFlow {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+        </style>
+
+        </div>
+
+        <div class="right">
+
+          <!-- <div class="pattern-bg"></div> -->
+          <div class="img-box">
+            <img src="assets/images/osas.png" alt="OSAS PIC" class="hero-img">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+          </div>
+
+        </div>
+        <style>
+.sticky-handbook {
+    position: fixed;
+    top: 90%; /* Vertically center */
+    left: 88%; /* Align to left side */
+    transform: translateY(-50%);
+    background-color: skyblue;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    overflow: hidden;
+    width: 65px; /* Initial width for logo only */
+    height: 65px;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.handbook-link {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between logo and text */
+    text-decoration: none;
+    padding: 5px;
+}
+
+.handbook {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.handbook-text {
+    font-size: 14px;
+    color: black;
+    white-space: nowrap;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-width 0.3s ease;
+}
+
+/* Expand on hover */
+.sticky-handbook:hover {
+    width: 180px; /* Expand to fit the text */
+    background-color: whitesmoke;
+}
+
+.sticky-handbook:hover .handbook-text {
+    opacity: 1;
+    max-width: 140px; /* Expand width to reveal the text */
+}
+
+.sticky-handbook:hover .handbook {
+    transform: scale(1.1); /* Slight zoom on logo */
+}
+
+        </style>
+<div class="sticky-handbook">
+  <a href="https://handbot.sulopcris.info/login" target="_blank" class="handbook-link">
+      <img src="assets/images/handbook-icon.png" alt="Handbook" class="handbook">
+      <span class="handbook-text">Student Handbook</span>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="main">
+
+      <div class="container">
+
+        <!--
+          - BLOG SECTION
+        -->
+
+        <div class="blog">
+
+          <h2 class="h2">Latest Post</h2>
+
+          <div class="blog-card-group">
+
+            <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="https://scontent.fdvo3-1.fna.fbcdn.net/v/t39.30808-6/481995792_122194601978149689_6509594200936703542_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OZ06-X413CsQ7kNvgF-2N8Y&_nc_oc=AdiOEy58UBrzKTbRo4YjCENb3Zmu-VBOeB5UC7PCVuhPcVg0OBD8wvLvGvDxDXjrgyA&_nc_zt=23&_nc_ht=scontent.fdvo3-1.fna&_nc_gid=AmehaPHOayyqlOx8mcIdl02&oh=00_AYGVVcQAsXf3G9v0aH4YxfHOk8bq56TmkGBe8Fs6Tfrr9g&oe=67D02753" alt="Building microservices with Dropwizard, MongoDB & Docker"
+                  width="250" class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny"></button>
+
+                <h3>
+                  <a href="https://www.facebook.com/photo?fbid=122194601972149689&set=a.122104416518149689" target="_blank" class="h3">
+                    𝗣𝗿𝗲𝘀𝗲𝗻𝘁𝗶𝗻𝗴 𝘁𝗵𝗲 𝗣𝗿𝗲𝘀𝗶𝗱𝗲𝗻𝘁’𝘀 𝗟𝗶𝘀𝘁𝗲𝗿𝘀 𝗳𝗼𝗿 𝘁𝗵𝗲 1𝘀𝘁 𝗦𝗲𝗺𝗲𝘀𝘁𝗲𝗿 𝗼𝗳 𝘁𝗵𝗲 𝗦𝗰𝗵𝗼𝗼𝗹 𝗬𝗲𝗮𝗿 2024-2025!
+                  </a>
+                </h3>
+
+                <p class="blog-text">
+                  Davao del Sur State College would like to congratulate the deserving students who made it to the President’s List of the 1st Semester, School Year 2024-2025.
+                  Congratulations and enjoy your success this semester!
+                  Check out the full list of awardees below.
+                  𝘕𝘰𝘵𝘦: 𝘋𝘦𝘢𝘯'𝘴 𝘭𝘪𝘴𝘵𝘦𝘳𝘴 𝘢𝘳𝘦 𝘧𝘰𝘳𝘸𝘢𝘳𝘥𝘦𝘥 𝘵𝘰 𝘵𝘩𝘦 𝘪𝘯𝘴𝘵𝘪𝘵𝘶𝘵𝘦𝘴. 𝘛𝘩𝘦𝘺 𝘮𝘢𝘺 𝘵𝘢𝘬𝘦 𝘵𝘩𝘦 𝘪𝘯𝘪𝘵𝘪𝘢𝘵𝘪𝘷𝘦 𝘸𝘪𝘵𝘩 𝘳𝘦𝘨𝘢𝘳𝘥 𝘵𝘰 𝘵𝘩𝘦 𝘱𝘶𝘣𝘭𝘪𝘤𝘢𝘵𝘪𝘰𝘯 𝘰𝘧 𝘋𝘦𝘢𝘯’𝘴 𝘓𝘪𝘴𝘵𝘦𝘳𝘴. 
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="assets/images/osas.png" alt="Julia Walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="https://www.facebook.com/people/DSSC-Student-Affairs-and-Services/61554490690229/#" target="_blank" class="h4">DSSC OSAS</a>
+
+                    <p class="text-sm">
+                      <time datetime="2022-01-17">March 6, 2025</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="https://scontent.fdvo3-1.fna.fbcdn.net/v/t39.30808-6/481499000_122194430924149689_5996378329436670766_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHX8F3Gn7czv86AX0Ev41KGojakq65vvfqiNqSrrm-9-ki2UEVlYzFNUE202X_6zhxzrKDfej8jCOWxtx0FxSWx&_nc_ohc=YnJvnZVqTxYQ7kNvgHA1Wmk&_nc_oc=AdjzLhqLBG4x2f2kem33uhgi0B7VGH-N0TzssFe18AtoruyZm90WNquTJpWQUTnRT80&_nc_zt=23&_nc_ht=scontent.fdvo3-1.fna&_nc_gid=AKKmC3Za8xBNBO-D93tqoB6&oh=00_AYGPyzXwLz1M5VZVdvFW0nomc2KR6QfPMxf_pKS0hNdchQ&oe=67D01C41" alt="Fast web page loading on a $20 feature phone" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny"></button>
+
+                <h3><a href="https://www.facebook.com/photo?fbid=122194430918149689&set=a.122104416518149689" target="_blank" class="h3"> 𝗜𝗠𝗣𝗟𝗘𝗠𝗘𝗡𝗧𝗔𝗧𝗜𝗢𝗡 𝗢𝗙 𝗗𝗦𝗦𝗖 𝗦𝗧𝗨𝗗𝗘𝗡𝗧𝗦' 𝗨𝗡𝗜𝗙𝗢𝗥𝗠</a></h3>
+
+                <p class="blog-text">
+                  All the undergraduate students are required to wear the 𝙘𝙤𝙢𝙥𝙡𝙚𝙩𝙚 𝙥𝙧𝙚𝙨𝙘𝙧𝙞𝙗𝙚𝙙 𝙨𝙘𝙝𝙤𝙤𝙡 𝙪𝙣𝙞𝙛𝙤𝙧𝙢. <br>
+                  𝐍𝐨𝐭𝐞: 𝙎𝙩𝙪𝙙𝙚𝙣𝙩𝙨 𝙖𝙧𝙚 𝙧𝙚𝙢𝙞𝙣𝙙𝙚𝙙 𝙩𝙤 𝙖𝙡𝙬𝙖𝙮𝙨 𝙬𝙚𝙖𝙧 𝙩𝙝𝙚𝙞𝙧 𝙨𝙘𝙝𝙤𝙤𝙡 𝙄𝘿. To those who do not yet have their ID must present the original copy of the recently issued 𝘾𝙚𝙧𝙩𝙞𝙛𝙞𝙘𝙖𝙩𝙚 𝙤𝙛 𝙍𝙚𝙜𝙞𝙨𝙩𝙧𝙖𝙩𝙞𝙤𝙣 (𝘾𝙊𝙍) to the guard on duty.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="assets/images/osas.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="https://www.facebook.com/people/DSSC-Student-Affairs-and-Services/61554490690229/#" target="_blank" class="h4">DSSC OSAS</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-12-10">March 5, 2025</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="https://scontent.fdvo3-1.fna.fbcdn.net/v/t39.30808-6/480439142_122192047640149689_4746550500080889081_n.jpg?stp=dst-jpg_p526x395_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGaGFJ8opb2j6UDuIoca78zqbH41tLZPvepsfjW0tk-9we9ZJwZz18-O7wb2ef1AMea48VQfYC-4YJa4PuNtDfS&_nc_ohc=yhmoJeTCytoQ7kNvgHJDVv8&_nc_oc=AdiNcAUfSLx1-MEIslAqtWYCWGR7c51yNfnnDDBfBCeBfPsSUWQfdHYPMasnLDlfPbQ&_nc_zt=23&_nc_ht=scontent.fdvo3-1.fna&_nc_gid=AbxAWJ5P5sN_ThXuYc26GhK&oh=00_AYE-awVfCNK8JAiDt10ziZzVfpdQZkBgPk25rxHK3hg9RA&oe=67D026E6" alt="Accessibility Tips for Web Developers" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny"></button>
+
+                <h3><a href="" class="h3">𝗟𝗢𝗢𝗞 || 𝗗𝗦𝗦𝗖 𝗠𝗢𝗔 𝗦𝗜𝗚𝗡𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗣𝗔𝗥𝗧𝗡𝗘𝗥𝗦</a></h3>
+
+                <p class="blog-text">
+                  𝐎𝐧 𝐅𝐞𝐛𝐫𝐮𝐚𝐫𝐲 18, 2024, 𝐃𝐚𝐯𝐚𝐨 𝐝𝐞𝐥 𝐒𝐮𝐫 𝐒𝐭𝐚𝐭𝐞 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 hosted the signing of 𝐌𝐞𝐦𝐨𝐫𝐚𝐧𝐝𝐮𝐦 𝐨𝐟 𝐀𝐠𝐫𝐞𝐞𝐦𝐞𝐧𝐭 (𝐌𝐎𝐀) to formally establish and collaborate for the 𝐏𝐫𝐨𝐠𝐫𝐚𝐦 𝐟𝐨𝐫 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐧𝐠 𝐚𝐧𝐝 𝐄𝐧𝐫𝐢𝐜𝐡𝐢𝐧𝐠 𝐑𝐞𝐬𝐢𝐥𝐢𝐞𝐧𝐭 (𝐏𝐄𝐄𝐑) 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐢𝐞𝐬. It is a project of 𝐃𝐒𝐒𝐂-𝐎𝐒𝐀𝐒 with the primary purpose of providing assistance for the social services needs of its neighboring communities. 
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="assets/images/osas.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="https://www.facebook.com/people/DSSC-Student-Affairs-and-Services/61554490690229/#" target="_blank" class="h4">DSSC OSAS</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-11-28">February 20, 2025</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="https://scontent.fdvo3-1.fna.fbcdn.net/v/t39.30808-6/480380500_122192046110149689_5910580923550466432_n.jpg?stp=dst-jpg_p600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFa2dg_w0Nyxnx9X60c6AU7RtEr2TnrbOlG0SvZOets6XaHOiNpJIH1bdd5QaTfQXunWq-IdbuSxFrHzOp1K64y&_nc_ohc=ImegZw70GGMQ7kNvgH7sCrg&_nc_oc=Adhdy9Cad-QP6X2YBZ0uFTuK1dK75-FJ_7FqLJyJyP-0gX2lCi8cb2_hkp7j8Kto7UA&_nc_zt=23&_nc_ht=scontent.fdvo3-1.fna&_nc_gid=AbxAWJ5P5sN_ThXuYc26GhK&oh=00_AYF3z6xSFCo7sZJbENVZURkj_HabzF0B4uDUidYA9ec-Xw&oe=67D03666" alt="Dynamically Securing Databases using Hashicorp Vault"
+                  width="250" class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny"></button>
+
+                <h3><a href="" class="h3">𝐍𝐎𝐓𝐈𝐂𝐄 𝐓𝐎 𝐀𝐋𝐋 𝐃𝐒𝐒𝐂 𝐒𝐓𝐔𝐃𝐄𝐍𝐓𝐒</a></h3>
+
+                <p class="blog-text">
+                  The 𝑶𝒇𝒇𝒊𝒄𝒆 𝒐𝒇 𝑺𝒕𝒖𝒅𝒆𝒏𝒕 𝑨𝒇𝒇𝒂𝒊𝒓𝒔 𝒂𝒏𝒅 𝑺𝒆𝒓𝒗𝒊𝒄𝒆𝒔 reminds all students that the 𝒘𝒆𝒂𝒓𝒊𝒏𝒈 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒓𝒆𝒔𝒄𝒓𝒊𝒃𝒆𝒅 𝒔𝒄𝒉𝒐𝒐𝒍 𝒖𝒏𝒊𝒇𝒐𝒓𝒎 will be 𝐦𝐚𝐧𝐝𝐚𝐭𝐨𝐫𝐲 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐌𝐚𝐫𝐜𝐡 𝟑, 𝟐𝟎𝟐𝟓 in accordance with the institution’s dress code policy.  
+                </p>
+
+                <div class="wrapper-flex">
+                  <div class="profile-wrapper">
+                    <img src="assets/images/osas.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">DSSC OSAS</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-11-20">February 20, 2025</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-5.png"
+                  alt="Adaptive Loading - Improving Web Performance on low-end devices" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Web Performance</button>
+
+                <h3><a href="" class="h3">Adaptive Loading - Improving Web Performance on low-end devices</a></h3>
+
+                <p class="blog-text">
+                  Adaptive Loading: Do not just respond based on screen size, adapt based on actual device hardware.
+                  Any user can have a slow experience. In a world with widely varying device capabilities, a "one-size"
+                  fits all
+                  experience may not always work. Sites that delight users on high-end devices can be unusable on
+                  low-end ones,
+                  particularly on median mobile and desktop hardware and in emerging markets.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-11-10">Nov 10, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT3M">3 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-6.png"
+                  alt="Don't Develop Just for Yourself - A Developer's Checklist to Accessibility" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Accessibility</button>
+
+                <h3><a href="" class="h3">Don't Develop Just for Yourself - A Developer's Checklist to Accessibility</a>
+                </h3>
+
+                <p class="blog-text">
+                  We, as developers, tend to develop sites unconsciously for people like ourselves. If we don't actively
+                  pay attention,
+                  the sites are often accessible only for certain types of people: Sighted mouse-users, who have good
+                  fine motor skills
+                  and are good at using computers.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-10-25">Oct 25, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT7M">7 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-7.png"
+                  alt="Building a Restful CRUD API with Node JS, Express, and MongoDB" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Database</button>
+
+                <h3><a href="" class="h3">Building a Restful CRUD API with Node JS, Express, and MongoDB</a></h3>
+
+                <p class="blog-text">
+                  Application Programming Interface is the abbreviation for API. An API is a software interface that
+                  enables two apps to
+                  communicate with one another. In other words, an API is a messenger that sends your request to the
+                  provider and then
+                  returns the response to you.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-10-15">Oct 15, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT5M">5 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-8.png" alt="Monitoring Performance with the PageSpeed Insights API"
+                  width="250" class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Web Performance</button>
+
+                <h3><a href="" class="h3">Monitoring Performance with the PageSpeed Insights API</a></h3>
+
+                <p class="blog-text">
+                  The PageSpeed Insights API provides free access to performance monitoring for web pages and returns
+                  data with
+                  suggestions for how to improve. The V5 API includes lab data from Lighthouse and real-world data from
+                  the Chrome User
+                  Experience Report (CrUX).
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-10-03">Oct 3, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT5M">5 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-9.png" alt="The best web accessibility tools for developers in 2021"
+                  width="250" class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Accessibility</button>
+
+                <h3><a href="" class="h3">The best web accessibility tools for developers in 2021</a>
+                </h3>
+
+                <p class="blog-text">
+                  The quality of the tools you use defines the speed with which you can diagnose and resolve problems.
+                  Each year the landscape changes dramatically in web technologies, and of late the tooling for
+                  accessibility is no
+                  exception.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-09-13">Sep 13, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT7M">7 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+
+            <!-- <div class="blog-card">
+
+              <div class="blog-card-banner">
+                <img src="./assets/images/blog-10.png"
+                  alt="How to connect a React frontend with a NodeJS/Express backend" width="250"
+                  class="blog-banner-img">
+              </div>
+
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">Database</button>
+
+                <h3><a href="" class="h3">How to connect a React frontend with a NodeJS/Express backend</a></h3>
+
+                <p class="blog-text">
+                  The MERN (MongoDB, Express, React, NodeJS) stack is very popular for making full stack applications,
+                  utilizing
+                  Javascript for both the backend and frontend as well as a document-oriented or non relational database
+                  (MongoDB),
+                  meaning that it's structured like JSON rather than a large excel sheet like SQL databases are.
+                </p>
+
+                <div class="wrapper-flex">
+
+                  <div class="profile-wrapper">
+                    <img src="./assets/images/author.png" alt="Julia walker" width="50">
+                  </div>
+
+                  <div class="wrapper">
+                    <a href="#" class="h4">Julia Walker</a>
+
+                    <p class="text-sm">
+                      <time datetime="2021-09-21">Sep 21, 2021</time>
+                      <span class="separator"></span>
+                      <ion-icon name="time-outline"></ion-icon>
+                      <time datetime="PT4M">4 min</time>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div> -->
+
+          </div>
+
+          <button class="btn load-more">Load More</button>
+
+        </div>
+
+
+
+
+
+        <!--
+          - ASIDE
+        -->
+
+        <div class="aside">
+
+          <div class="contact">
+
+            <h2 class="h2">Let's Talk</h2>
+
+            <div class="wrapper">
+
+              <p>
+                <!-- Do you want to learn more about how I can help your company overcome problems? Let us have a
+                conversation. -->
+              </p>
+
+              <ul class="social-link">
+
+                <li>
+                  <a href="https://www.facebook.com/profile.php?id=61554490690229" class="icon-box facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+          <!-- <div class="newsletter">
+
+            <h2 class="h2">Newsletter</h2>
+
+            <div class="wrapper">
+
+              <p>
+                Subscribe to our newsletter to be among the first to keep up with the latest updates.
+              </p>
+
+              <form action="#">
+                <input type="email" name="email" placeholder="Email Address" required>
+
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+
+            </div>
+
+          </div> -->
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+
+
+
+  <!--
+    - #FOOTER
+  -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="wrapper">
+
+        <a href="#" class="footer-logo" id="footerlogoContainer">
+          <img src="assets/images/dssc.png" alt="DSSC LOGO" class="logo front" style="width: 100%; height: 100%;">
+          <img src="assets/images/osas.png" alt="OSAS LOGO" class="logo back" style="width: 100%; height: 100%;">
+        </a>
+
+        <script>
+          function flipLogos() {
+              document.getElementById("logoContainer").classList.toggle("flipped");
+              document.getElementById("footerlogoContainer").classList.toggle("flipped");
+          }
+  
+          setInterval(flipLogos, 5000); // Flip every 5 seconds
+        </script>
+    
+
+        <p class="footer-text">
+          <!-- Learn about Web accessibility, Web performance, and Database management. -->
+        </p>
+
+      </div>
+
+      <div class="wrapper">
+
+        <p class="footer-title">Quick Links</p>
+
+        <ul>
+
+          <li>
+            <a href="#" class="footer-link">Advertise with us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="wrapper">
+
+        <p class="footer-title">Legal Stuff</p>
+
+        <ul>
+
+          <li>
+            <a href="#" class="footer-link">Privacy Notice</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Cookie Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms Of Use</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <p class="copyright">
+      <!-- &copy; Copyright 2024 <a href="#">SimpleBlog</a> -->
+    </p>
+
+  </footer>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

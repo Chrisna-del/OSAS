@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Posts with Images</title>
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+        import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
+
+        // ✅ Replace with your Firebase Config
+        const firebaseConfig = {
+  apiKey: "AIzaSyCWvPKfx5-WCNUNs_tKRWhL0cHfqMiY9NQ",
+  authDomain: "osas-5b854.firebaseapp.com",
+  databaseURL: "https://osas-5b854-default-rtdb.firebaseio.com",
+  projectId: "osas-5b854",
+  storageBucket: "osas-5b854.firebasestorage.app",
+  messagingSenderId: "899725988057",
+  appId: "1:899725988057:web:8164d83b4f02fa7301aec8",
+};
+
+        // ✅ Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const storage = getStorage(app);
+
+        // ✅ Function to upload images & save post
+        async function savePost() {
+            const postContent = document.getElementById("postContent").value.trim();
+            const fileInput = document.getElementById("imageInput");
+            const files = fileInput.files;
+
+            if (postContent === "" && files.length === 0) {
+                alert("Please write something or upload images.");
+                return;
+            }
+
+            let imageUrls = [];
+            
+            // ✅ Upload images to Firebase Storage
+            for (let file of files) {
+                const imgRef = storageRef(storage, 'images/' + Date.now() + '-' + file.name);
+                const snapshot = await uploadBytes(imgRef, file);
+                const downloadURL = await getDownloadURL(snapshot.ref);
+                imageUrls.push(downloadURL);
+            }
+
+            // ✅ Save post & image URLs to Realtime Database
+            push(ref(db, "posts"), {
+                content: postContent,
+                images: imageUrls,
+                timestamp: new Date().toISOString()
+            });
+
+            // ✅ Reset input fields
+            document.getElementById("postContent").value = "";
+            document.getElementById("imageInput").value = "";
+        }
+
+        // ✅ Function to load posts in real-time
+        onChildAdded(ref(db, "posts"), (snapshot) => {
+            const postData = snapshot.val();
+            displayPost(postData);
+        });
+
+        // ✅ Function to display a post
+        function displayPost(postData) {
+            const postContainer = document.getElementById("post-container");
+            let postDiv = document.createElement("div");
+            postDiv.className = "post";
+            
+            let contentP = document.createElement("p");
+            contentP.textContent = postData.content;
+            
+            let timeP = document.createElement("small");
+            timeP.textContent = `Posted on: ${new Date(postData.timestamp).toLocaleString()}`;
+            timeP.className = "timestamp";
+
+            let imageContainer = document.createElement("div");
+            imageContainer.className = "post-images";
+
+            postData.images.forEach(imageSrc => {
+                let img = document.createElement("img");
+                img.src = imageSrc;
+                img.style.maxWidth = "100px";
+                img.style.borderRadius = "5px";
+                img.style.marginRight = "5px";
+                imageContainer.appendChild(img);
+            });
+
+            postDiv.appendChild(contentP);
+            postDiv.appendChild(imageContainer);
+            postDiv.appendChild(timeP);
+            postContainer.prepend(postDiv);
+        }
+    </script>
+
+    <!-- ✅ Basic Styling -->
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+        #post-container { margin-top: 20px; }
+        .post { background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 10px; }
+        .post-images { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .post img { max-width: 100px; border-radius: 5px; }
+        .timestamp { color: gray; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <h2>Create a New Post</h2>
+    <textarea id="postContent" placeholder="Write something..." rows="3" cols="50"></textarea><br>
+    <input type="file" id="imageInput" accept="image/*" multiple>
+    <button onclick="savePost()">Post</button>
+
+    <h3>Live Posts:</h3>
+    <div id="post-container"></div>
+
+</body>
+</html>
